@@ -9,26 +9,27 @@ import br.com.exemplo.comercio.Compra;
 
 public class CompraTest {
 
+	private Compra parcelada;
+	private Compra aVista;
+
 	@Before
 	public void setUp() {
+		this.aVista = new Compra(500);
+		this.parcelada = new Compra(4, 1500);
 	}
 
 	@Test
 	public void deveVerificarCompraAVista() {
-		Compra compra = new Compra(500);
-
-		assertEquals(1, compra.getNumeroDeParcelas());
-		assertEquals(500, compra.getValorTotal());
-		assertEquals(500, compra.getValorParcelas());
+		assertEquals(1, aVista.getNumeroDeParcelas());
+		assertEquals(500, aVista.getValorTotal());
+		assertEquals(500, aVista.getValorParcelas());
 	}
 
 	@Test
 	public void deveVerificarCompraAParcelada() {
-		Compra compra = new Compra(4, 1500);
-
-		assertEquals(4, compra.getNumeroDeParcelas());
-		assertEquals(1500, compra.getValorParcelas());
-		assertEquals(6000, compra.getValorTotal());
+		assertEquals(4, parcelada.getNumeroDeParcelas());
+		assertEquals(1500, parcelada.getValorParcelas());
+		assertEquals(6000, parcelada.getValorTotal());
 	}
 
 }
